@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rank the Clothing Items</title>
+    <title>Rank these Clothing Items</title>
 </head>
 <body>
-    <h2>Rank the Clothing Items from Best (1) to Worst (10)</h2>
+    <h2>Rank the following Clothing Items from Best (1) to Worst (10)</h2>
     <form method="POST">
         <ol>
             {% for image in images %}
@@ -14,6 +14,9 @@
                 <img src="{{ url_for('static', filename='images/' + image) }}" width="150">
                 <label for="image_{{ loop.index }}">Rank (1-10):</label>
                 <input type="number" name="image_{{ loop.index }}" min="1" max="10" required>
+
+                <!-- Hidden field to store the image filename -->
+                <input type="hidden" name="image_filenames" value="{{ image }}">
             </li>
             {% endfor %}
         </ol>
