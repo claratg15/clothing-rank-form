@@ -39,7 +39,7 @@ def index():
 @app.route('/download')
 def download():
     # Send the CSV file as a download
-    return send_from_directory(directory=os.getcwd(), path=CSV_FILE)
+    return send_from_directory(directory=os.getcwd(), filename=CSV_FILE)
 
 if __name__ == "__main__":
     init_csv()
