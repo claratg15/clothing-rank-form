@@ -38,21 +38,8 @@ def index():
 
 @app.route('/download')
 def download():
-    try:
-        # Ensure the directory of the CSV file
-        directory = os.path.join(os.getcwd())  # Current working directory
-
-        # Check if the file exists
-        if not os.path.exists(os.path.join(directory, CSV_FILE)):
-            return "CSV file not found!", 404
-
-        # Send the CSV file as a download
-        return send_from_directory(directory=directory, filename=CSV_FILE)
-
-    except Exception as e:
-        # Log the error and return a message
-        print(f"Error: {e}")
-        return "An error occurred while processing the request.", 500
+    # Send the CSV file as a download
+    return send_from_directory(directory=os.getcwd(), path=CSV_FILE)
 
 
 if __name__ == "__main__":
